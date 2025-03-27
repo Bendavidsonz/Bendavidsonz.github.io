@@ -49,7 +49,6 @@ body {
 }
 
 #intro {
-    align-content: center;
     background-image: url(images/steve-gribble-unsplash.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -59,6 +58,20 @@ body {
     color: #ffffff;
     display: flex;
     align-items: center;
+    padding-inline: 5%;
+    gap: 5%;
+}
+
+@media (max-width: 1500px){
+    #intro{
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+    }
+
+    #dev-details{
+        margin: 0 !important;
+    }
 }
 
 #hello-world {
@@ -66,7 +79,6 @@ body {
     width: fit-content;
     line-height: 85%;
     /* mix-blend-mode: difference; */
-    margin-left: 5%;
 }
 
 #background {
@@ -95,24 +107,20 @@ nav {
     box-sizing: border-box;
     transition: color 1s;
     font-weight: 600;
+    justify-content: flex-end;
+    gap: 20px;
     a {
         color: inherit;
     }
-}
-
-#right-float-nav {
-    gap: 20px;
-    display: flex;
 }
 
 /* Small devices (phones, 600px and down) */
 @media (max-width: 600px) {
     nav {
         font-size: 1rem;
-        padding-bottom: 20px;
-        flex-direction: column;
     }
 }
+
 
 #scroll-wrapper {
     height: 100vh;
@@ -166,7 +174,6 @@ nav {
     right: -5%;
     mask: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 90%);
     background-color: rgb(246 247 248 / 1);
-    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
 }
 
 .project img{
@@ -227,4 +234,32 @@ nav {
     to{
         left: max(calc(160px * 6),100%);
     }
+}
+
+#dev-details{
+    width: 35ch;
+    margin-inline: auto;
+    border-radius: 32px;
+    background-color: #b0b0b01a;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+    
+
+    h3{
+        margin: 0;
+    }
+    
+    p:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.subtitle{
+    font-size:0.9rem;
+    margin-block: 5px;
+    filter: brightness(0.8);
+}
+
+.box-shadow{
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
 }

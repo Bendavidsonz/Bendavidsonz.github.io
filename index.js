@@ -62,13 +62,13 @@ function scrollEvent() {
     };
 
     if (sectionId != "intro"){
-      navBottom.children[1].children[0].style.display = "block";
-      navBottom.children[1].children[1].style.display = "none";
+      navBottom.children[0].style.display = "block";
+      navBottom.children[1].style.display = "none";
       
     }
     else if (sectionId != "project-section"){
-      navBottom.children[1].children[0].style.display = "none";
-      navBottom.children[1].children[1].style.display = "block";
+      navBottom.children[0].style.display = "none";
+      navBottom.children[1].style.display = "block";
     }
     // Update nav based on active section
     if (navTextMap[sectionId]) {
