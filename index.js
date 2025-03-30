@@ -3,6 +3,7 @@ function typeletters(phrase, tagid) {
     tag.innerHTML = "";  // Clear previous content
     tag.style = "white-space: pre-line;"
 
+
     let totalDelay = 0; // Tracks cumulative delay
     const MIN_DELAY = 30; // Minimum delay per letter
     const MAX_DELAY = 100; // Maximum delay per letter
@@ -13,15 +14,10 @@ function typeletters(phrase, tagid) {
 
         setTimeout(function () {
             // Create a new span element
-            let span = document.createElement("span");
-            span.textContent = phrase[i];
-
-            tag.appendChild(span);  // Append instead of overwriting
+            tag.textContent = phrase.substring(0,i);
         }, totalDelay); // Use accumulated delay to maintain order
     }
 }
-
-typeletters("Hello\nWorld.", "hello-world")
 
 var homeDiv = document.getElementById("intro");
 
@@ -33,7 +29,7 @@ function easeBackgroundSaturation(){
     }   
 }
 
-easeBackgroundSaturation();
+
 
 var navBottom = document.getElementById("nav-bottom");
 const scrollContainer = document.getElementById("scroll-wrapper");
@@ -77,13 +73,25 @@ function scrollEvent() {
   }
 }
 
-
 scrollContainer.addEventListener("scroll", scrollEvent);
 
-scrollEvent();
+window.addEventListener("load", () => {
+  typeletters("Hello\nWorld.", "hello-world")
+  easeBackgroundSaturation();
+  scrollEvent();
+  slideDevDetails();
+  
+});
 
+function slideDevDetails(){
+  const element = document.getElementById("dev-details");
+  element.style = "transform: translateY(0);"
+  element.style.opacity = "1";
+
+}
 
 /*animDivs.forEach((div, i) => {
   div.style.animationDuration = 30+ "s";
   div.style.animationDelay = `${30/animDivs.length* (animDivs.length - i)*-1}s`; // Dynamically sets delay
 });*/
+

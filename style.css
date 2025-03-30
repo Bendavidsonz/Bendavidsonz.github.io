@@ -72,6 +72,8 @@ body {
 
     #dev-details{
         margin: 0 !important;
+        position: relative !important;
+        right: 0 !important;
     }
 }
 
@@ -97,6 +99,7 @@ body {
 }
 
 nav {
+    color: transparent;
     position: fixed;
     bottom: 0;
     display: flex;
@@ -165,14 +168,19 @@ nav {
     height: 100%;
 }
 
+.project-container{
+    width: 100%;
+    height: 40%;
+    display: flex;
+}
+
 .project {
     position: relative;
-    width: 70%;
-    height: 40%;
+    flex: 7;
+    height: 100%;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='32' ry='32' stroke='%2300000030' stroke-width='1' stroke-dasharray='8' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
     padding: .875rem;
     border-radius: 32px 0px 0px 32px;
-    right: -5%;
     mask: linear-gradient(to bottom, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 90%);
     background-color: rgb(246 247 248 / 1);
 }
@@ -183,6 +191,14 @@ nav {
     object-fit: cover;
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.project-line{
+    height:64px;
+    flex: 3;
+    border-bottom: dashed #b0b0b0 1px;
+    border-bottom-left-radius: 32px;
+    align-self: center;
 }
 
 #tech-marquee {
@@ -238,15 +254,20 @@ nav {
 }
 
 #dev-details{
-    width: 35ch;
-    max-width: 80vw;
-    max-width: 80dvw;
-    margin-inline: auto;
+    max-width: 35ch;
+    width: 90vw;
+    width: 90dvw;
+    position: absolute;
+    right: 25%;
     border-radius: 10px;
     background-color: #b0b0b01a;
     padding: 20px;
     backdrop-filter: blur(2px);
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(50px);
     
+    transition: opacity 1s ease, transform 1s ease;
 
     h3{
         margin: 0;
@@ -256,6 +277,8 @@ nav {
         margin-bottom: 0;
     }
 }
+
+
 
 .subtitle{
     font-size:0.9rem;
