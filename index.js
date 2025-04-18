@@ -1,32 +1,39 @@
 function typeletters(phrase, tagid) {
-    let tag = document.getElementById(tagid);
-    tag.innerHTML = "";  // Clear previous content
-    tag.style = "white-space: pre-line;"
+  let tag = document.getElementById(tagid);
+  tag.innerHTML = "";  // Clear previous content
+  tag.style = "white-space: pre-line;"
 
 
-    let totalDelay = 0; // Tracks cumulative delay
-    const MIN_DELAY = 30; // Minimum delay per letter
-    const MAX_DELAY = 100; // Maximum delay per letter
+  let totalDelay = 0; // Tracks cumulative delay
+  const MIN_DELAY = 30; // Minimum delay per letter
+  const MAX_DELAY = 100; // Maximum delay per letter
 
-    for (let i = 0; i < phrase.length; i++) {
-        let delay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
-        totalDelay += delay; // Accumulate delay
+  for (let i = 0; i < phrase.length; i++) {
+    let delay = Math.floor(Math.random() * (MAX_DELAY - MIN_DELAY + 1)) + MIN_DELAY;
+    totalDelay += delay; // Accumulate delay
 
-        setTimeout(function () {
-            // Create a new span element
-            tag.textContent = phrase.substring(0,i);
-        }, totalDelay); // Use accumulated delay to maintain order
-    }
+    setTimeout(function () {
+      // Create a new span element
+      tag.textContent = phrase.substring(0, i);
+    }, totalDelay); // Use accumulated delay to maintain order
+  }
 }
 
 var homeDiv = document.getElementById("intro");
+const backgroundDiv = document.getElementById("background-image");
+const saturationLayer = document.getElementById("saturation-layer");
 
-function easeBackgroundSaturation(){
-    for (let i = 0; i <= 10; i ++){
-        setTimeout(function (){
-            homeDiv.style = `filter: saturate(${i/10});`
-          }, i);
-    }   
+function easeBackgroundSaturation() {
+  saturationLayer.style.background = "transparent";
+  for (let i = 0; i <= 10; i++) {
+    setTimeout(function () {
+      saturationLayer.style.filter = `saturate(${i / 10})`;
+      if (i == 10) {
+        saturationLayer.style.background = "";
+        saturationLayer.style.filter = "";
+      }
+    }, i * 100);
+  }
 }
 
 
@@ -57,14 +64,16 @@ function scrollEvent() {
       "contact": { text: "Contact", color: "lightorange" }
     };
 
-    if (sectionId != "intro"){
+    if (sectionId != "intro") {
       navBottom.children[0].style.display = "block";
       navBottom.children[1].style.display = "none";
-      
+      backgroundDiv.classList.add("zoom-blur")
+
     }
-    else if (sectionId != "project-section"){
+    else if (sectionId != "project-section") {
       navBottom.children[0].style.display = "none";
       navBottom.children[1].style.display = "block";
+      backgroundDiv.classList.remove("zoom-blur")
     }
     // Update nav based on active section
     if (navTextMap[sectionId]) {
@@ -80,10 +89,10 @@ window.addEventListener("load", () => {
   easeBackgroundSaturation();
   scrollEvent();
   slideDevDetails();
-  
+  checkProjectOverflow();
 });
 
-function slideDevDetails(){
+function slideDevDetails() {
   const element = document.getElementById("dev-details");
   element.style = "transform: translateY(0);"
   element.style.opacity = "1";
@@ -95,3 +104,39 @@ function slideDevDetails(){
   div.style.animationDelay = `${30/animDivs.length* (animDivs.length - i)*-1}s`; // Dynamically sets delay
 });*/
 
+
+const horizontalScrollArea = document.querySelector('.horizontal-scroll');
+
+horizontalScrollArea.addEventListener('wheel', (e) => {
+  if (horizontalScrollArea.style.overflowX == 'hidden') {
+    return;
+  }
+
+  if (e.deltaY === 0) return; // only act on vertical scroll
+  e.preventDefault();
+  horizontalScrollArea.scrollLeft += e.deltaY;
+}, { passive: false });
+
+function checkProjectOverflow() {
+  if (horizontalScrollArea.scrollWidth <= horizontalScrollArea.clientWidth) {
+    horizontalScrollArea.style.overflowX = 'hidden';
+  } else {
+    horizontalScrollArea.style.overflowX = 'auto'; // or 'scroll'
+  }
+}
+
+window.onresize = checkProjectOverflow;
+
+
+document.querySelectorAll('.project').forEach(project => {
+  const infoIcon = project.querySelector('.info-icon');
+  const details = project.querySelector('.project-details');
+
+  infoIcon.addEventListener('click', () => {
+    project.classList.toggle('active');
+
+    // Swap icon
+    const isActive = project.classList.contains('active');
+    infoIcon.src = isActive ? 'images/icons/close.svg' : 'images/icons/info.svg';
+  });
+});

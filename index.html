@@ -15,9 +15,12 @@
 </head>
 
 <body>
+  <div id="background-image">
+    <div id="saturation-layer"></div>
+  </div>
   <main id="scroll-wrapper">
     <div id="intro" class="scroll-section">
-      <div id="saturation-layer"></div>
+      
       <h1 id="hello-world" class="big-text"></h1>
       <div id="dev-details" class="box-shadow">
         <h3>Ben Davidson</h3>
@@ -29,22 +32,47 @@
 
     <div id="project-section" class="scroll-section">
       <h1 id="projects-title" class="">Projects I've worked on &#8595;</h1>
-      <div class="projects">
+      <div id="projects">
 
-        <div class="project-container">
-          <div class="project-line"></div>
+        <div id="project-container" class="horizontal-scroll">
           <div class="project box-shadow">
-
-            <img>
+            <img class="info-icon" src="images/icons/info.svg">
+            <img src="images/projects/design-show.png">
+            <div class="project-details">
+              <h2>Design Show Website</h2>
+              <p>I developed this website myself as a concept for the 2024 University of Waikato Design Show, along with the video banners and animations used on the website.</p>
+              <div class="project-links">
+                <a href="https://github.com/Bendavidsonz/design-show" target="_blank" rel="noopener noreferrer"><img src="images/icons/github.svg"></a>
+                <a href="https://bendavidsonz.github.io/design-show/" target="_blank" rel="noopener noreferrer"><img src="images/icons/external-link.svg"></a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="project-container">
-          <div class="project-line"></div>
+
+          <!--<div class="project box-shadow">
+            <img class="info-icon" src="images/icons/info.svg">
+            <img>
+            <div class="project-details">
+            </div>
+          </div>
+
           <div class="project box-shadow">
-
+            <img class="info-icon" src="images/icons/info.svg">
             <img>
+            <div class="project-details"></div>
           </div>
-        </div>
+
+          <div class="project box-shadow">
+            <img class="info-icon" src="images/icons/info.svg">
+            <img>
+            <div class="project-details"></div>
+          </div>
+
+          <div class="project box-shadow">
+            <img class="info-icon" src="images/icons/info.svg">
+            <img>
+            <div class="project-details"></div>
+          </div>
+        </div>-->
       </div>
       <div id="tech-marquee">
         <img class="tech1" src="images/icons/java.svg">
