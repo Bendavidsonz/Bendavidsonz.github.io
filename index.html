@@ -37,7 +37,12 @@
         <div id="project-container" class="horizontal-scroll">
           <div class="project box-shadow">
             <img class="info-icon" src="images/icons/info.svg">
-            <img src="images/projects/design-show.png">
+            <picture>
+              <!-- Image for screens smaller than 768px -->
+              <source srcset="images/projects/design-show-mobile.png" media="(max-width: 767px)">
+              <!-- Default image (desktop) -->
+              <img src="images/projects/design-show.png" alt="Preview Image">
+            </picture>
             <div class="project-details">
               <h2>Design Show Website</h2>
               <p>I developed this website myself as a concept for the 2024 University of Waikato Design Show, along with the video banners and animations used on the website.</p>

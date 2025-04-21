@@ -262,13 +262,14 @@ nav {
     }
 }
 
-
-.project img {
+picture img {
     height: 100%;
+    width: 100%; /* Optional: ensures full container width */
     object-fit: cover;
-    border-radius: 5px;
     object-position: top;
-}
+    border-radius: 5px;
+    display: block; /* Removes unwanted bottom spacing */
+  }
 
 #tech-marquee {
     position: absolute;
