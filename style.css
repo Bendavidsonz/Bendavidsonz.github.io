@@ -176,9 +176,13 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/8;
     max-width: 85%;
     overflow: hidden;
+
+    picture{
+        height: 100%;
+    }
 }
 
 .project-details{
